@@ -22,12 +22,13 @@ var entryJs = {
 	list: ['./src/js/page/list.js'],
 	about: ['./src/js/page/about.js']
 };
-// 通用第三方模块 ，最后和抽离的公共模块合并
+// 通用抽离模块 ，最后和抽离的公共模块合并
 //entryJs['common'] = [
 //	// 3rd dependencies
 //	'./src/js/lib/bootstrap/bootstrap.js'
 //];
 
+//第三方模块不需要bundle,直接在文件按顺序引用
 module.exports = {
 	//entry: { //配置入口文件，有几个写几个
 	//	index: './src/js/page/index.js',
@@ -62,7 +63,7 @@ module.exports = {
 			}, {
 				//文件加载器，处理文件静态资源
 				test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: 'file-loader?name=./fonts/[name].[ext]'
+				loader: 'file-loader?name=./font/[name].[ext]'
 			}, {
 				//图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
 				//如下配置，将小于8192byte的图片转成base64码
@@ -72,6 +73,9 @@ module.exports = {
 			{
 				test: require.resolve('jquery'),
 				loader: 'expose-loader?jQuery'
+			},
+			{ 	test: /bootstrap\/js\//,
+				loader: 'imports?jQuery=jquery'
 			}
 		]
 	},
