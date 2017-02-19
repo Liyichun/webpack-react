@@ -15,12 +15,12 @@ module.exports = {
     plugins: [
         new webpack.DllPlugin({
             context: __dirname,                // 必填项，用来标志manifest中的路径
-            path: './config/manifest.json',    // 必填项，存放manifest的路径
+            path: './manifest.json',    // 必填项，存放manifest的路径
             name: '[name]'                     // 必填项，manifest的name
         }),
         new HtmlWebpackPlugin({              // 利用该插件实现vendor被插入到html中
-            filename: './index.html',
-            template: './index.html',
+            filename: '../index.html',
+            template: './index_origin.html',
             inject: 'body',
             chunks: ['vendors'],
             hash: true,

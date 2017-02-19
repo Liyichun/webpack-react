@@ -114,7 +114,7 @@ module.exports = {
 		//HtmlWebpackPlugin，模板生成相关的配置，每个对于一个页面的配置，有几个写几个
 		new webpack.DllReferencePlugin({       // 敲黑板，这里是重点
 			context: __dirname,                  // 同那个dll配置的路径保持一致
-			manifest: require('./config/manifest.json') // manifest的缓存信息
+			manifest: require('./manifest.json') // manifest的缓存信息
 		}),
 		new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
 			favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
