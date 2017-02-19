@@ -1,21 +1,32 @@
-//引入css
-require("../../css/lib/reset.css");
-require("../../css/common/global.css");
-require("../../css/common/grid.css");
-require("../../css/page/index.less");
-require("../../../node_modules/bootstrap/dist/css/bootstrap.min.css");
-require("../../css/common/font-awesome.css");
-require("../../../node_modules/bootstrap/dist/js/bootstrap.min.js");
+// 相当于layout
+import React, { PropTypes, Component } from 'react'
+import { hashHistory } from 'react-router'
 
+class Apps extends Component {
 
-var Header = require('../components/header/index.js');
-new Header("g-hd");
-$('.g-bd').append('<p class="text">这是由js生成的一句话。</p>');
+    constructor(props, context) {
+        super(props, context);
+        this.state = {}
+    }
 
-//增加事件
-$('.btn').click(function() {
-	require.ensure(['../components/dialog/index.js'], function(require) {
-		var Dialog = require('../components/dialog/index.js');
-		new Dialog();
-	});
-});
+    render() {
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        )
+    }
+
+    componentDidMount() {
+        // 只会执行一次，合适公共数据请求
+        // console.log('layout Didmount');
+    }
+
+    // 路由切换时会触发
+    componentDidUpdate() {
+        // 记录路由切换完成、组件都渲染完成之后，页面的hash（包含了路由信息）
+        window.webappLocationFrom = location.hash;
+    }
+}
+
+export default Apps

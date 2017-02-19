@@ -13,3 +13,4 @@ module.exports = function() {
 	$('body').append($dialog);
 	$dialog.fadeIn();
 }
+
