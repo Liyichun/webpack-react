@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 //引入css
 import HomeHeader from '../components/header/index.js';
 import ModalControl from '../components/modal/modal.jsx';
+import CSS3 from './css3test'
 import App from './index.jsx';
 require("../../css/lib/reset.css");
 require("../../css/common/global.css");
@@ -38,6 +39,7 @@ class Home extends React.Component{
 
                 <HomeHeader />
                 <ModalControl />
+                <CSS3 />
             </div>
 
         )
